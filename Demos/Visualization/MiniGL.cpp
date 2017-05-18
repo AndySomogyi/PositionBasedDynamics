@@ -1037,6 +1037,7 @@ void MiniGL::breakPoint()
 
 void MiniGL::breakPointMainLoop()
 {
+    return;
 	if (m_breakPointActive)
 	{
 		m_breakPointLoop = true;

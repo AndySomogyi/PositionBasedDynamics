@@ -65,7 +65,7 @@ const unsigned int width = 30;
 const unsigned int depth = 5;
 const unsigned int height = 5; 
 short simulationMethod = 2;
-bool doPause = true;
+bool doPause = false;
 bool renderContacts = false;
 std::vector<unsigned int> selectedParticles;
 Vector3r oldMousePos;

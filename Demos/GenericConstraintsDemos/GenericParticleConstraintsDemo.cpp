@@ -45,7 +45,7 @@ const int nRows = 30;
 const int nCols = 30;
 const Real width = 10.0;
 const Real height = 10.0;
-bool doPause = true;
+bool doPause = false;
 std::vector<unsigned int> selectedParticles;
 Vector3r oldMousePos;
 Shader *shader;

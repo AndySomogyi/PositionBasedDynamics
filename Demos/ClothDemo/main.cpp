@@ -65,7 +65,7 @@ const Real width = 10.0;
 const Real height = 10.0;
 short simulationMethod = 2;
 short bendingMethod = 2;
-bool doPause = true;
+bool doPause = false;
 std::vector<unsigned int> selectedParticles;
 Vector3r oldMousePos;
 Shader *shader;

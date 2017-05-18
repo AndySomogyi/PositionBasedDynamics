@@ -1,7 +1,10 @@
 
 #include "BoundingSphere.h"
 #include <cstring>
+
+#if defined(_OPENMP)
 #include "omp.h"
+#endif
 
 template<typename HullType> void
 KDTree<HullType>::construct()
@@ -121,7 +124,7 @@ KDTree<HullType>::traverse_breadth_first_parallel(TraversalPredicate pred,
 	TraversalCallback cb) const
 {
 	auto start_nodes = std::vector<QueueItem>{};
-#ifdef _DEBUG
+#if defined(_DEBUG) || !defined(_OPENMP)
 	const unsigned int maxThreads = 1;
 #else
 	const unsigned int maxThreads = omp_get_max_threads();

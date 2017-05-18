@@ -48,7 +48,7 @@ add_dependencies(JointDemo ${SIMULATION_DEPENDENCIES})
 target_link_libraries(JointDemo ${SIMULATION_LINK_LIBRARIES})
 
 add_definitions(-DTW_NO_LIB_PRAGMA -DTW_STATIC)
-find_package( Eigen3 REQUIRED )
+
 include_directories( ${EIGEN3_INCLUDE_DIR} )
 include_directories(${PROJECT_PATH}/extern/freeglut/include)
 include_directories(${PROJECT_PATH}/extern/glew/include)

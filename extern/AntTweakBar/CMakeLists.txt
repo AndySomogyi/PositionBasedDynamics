@@ -34,7 +34,14 @@ set(ATB_SOURCES
 
 set(ATB_HEADERS
     include/AntTweakBar.h
-)
+    )
+
+set_source_files_properties(${ATB_SOURCES} PROPERTIES
+  COMPILE_FLAGS "-x objective-c++")
+
+set_source_files_properties(${ATB_HEADERS} PROPERTIES
+  COMPILE_FLAGS "-x objective-c++")
+
     
 add_definitions(-DTW_EXPORTS -DTW_STATIC)
 
@@ -47,7 +54,7 @@ if (APPLE)
    include_directories ( /System/Library/Frameworks )
    find_library(APPKIT_LIBRARY AppKit)
    set(EXTRA_LIBS ${APPKIT_LIBRARY})
-   set(CMAKE_CXX_FLAGS "-g -Wall -ObjC++ -fPIC -fno-strict-aliasing -D__PLACEMENT_NEW_INLINE")
+   set(CMAKE_CXX_FLAGS "-x objective-c++ -g -Wall -fPIC -fno-strict-aliasing -D__PLACEMENT_NEW_INLINE")
    add_definitions(-D_MACOSX)   
 elseif (UNIX)
     add_definitions(-D_UNIX -D__PLACEMENT_NEW_INLINE)

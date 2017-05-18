@@ -10,11 +10,17 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 include(${PROJECT_PATH}/CMake/Common.cmake)
 
-if (WIN32)
-  subdirs(extern/freeglut extern/AntTweakBar extern/glew Demos PositionBasedDynamics)
-else()
-  subdirs(extern/AntTweakBar extern/glew Demos PositionBasedDynamics)
-endif()
+
+# set the eigen include dir, only uses eigen as headers
+set(EIGEN3_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/extern/eigen")
+
+message("EIGEN3_INCLUDE_DIR: ${EIGEN3_INCLUDE_DIR}")
+
+add_subdirectory(extern)
+
+add_subdirectory(Demos)
+
+add_subdirectory(PositionBasedDynamics)
 
 install(DIRECTORY ./Common
 DESTINATION include

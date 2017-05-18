@@ -54,7 +54,7 @@ const unsigned int height = 20;
 const Real containerWidth = (width + 1)*particleRadius*2.0 * 5.0;
 const Real containerDepth = (depth + 1)*particleRadius*2.0;
 const Real containerHeight = 4.0;
-bool doPause = true;
+bool doPause = false;
 std::vector<unsigned int> selectedParticles;
 Vector3r oldMousePos;
 // initiate buffers

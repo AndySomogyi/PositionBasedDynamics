@@ -1,6 +1,8 @@
 #include "DistanceFieldCollisionDetection.h"
 #include "Demos/Simulation/IDFactory.h"
+#if defined(_OPENMP)
 #include "omp.h"
+#endif
 
 using namespace PBD;
 
@@ -46,7 +48,7 @@ void DistanceFieldCollisionDetection::collisionDetection(SimulationModel &model)
 
 	//omp_set_num_threads(1);
 	std::vector<std::vector<ContactData> > contacts_mt;	
-#ifdef _DEBUG
+#if defined(_DEBUG) || !defined(_OPENMP)
 	const unsigned int maxThreads = 1;
 #else
 	const unsigned int maxThreads = omp_get_max_threads();
@@ -211,7 +213,7 @@ void DistanceFieldCollisionDetection::collisionDetectionRigidBodies(RigidBody *r
 				const Vector3r cp_w = R.transpose() * cp + v2;
 				const Vector3r n_w = R.transpose() * n;
 
-#ifdef _DEBUG
+#if defined(_DEBUG) || !defined(_OPENMP)
 				int tid = 0;
 #else
 				int tid = omp_get_thread_num();
@@ -290,7 +292,7 @@ void DistanceFieldCollisionDetection::collisionDetectionRBSolid(const ParticleDa
 				const Vector3r cp_w = R.transpose() * cp + v2;
 				const Vector3r n_w = R.transpose() * n;
 
-#ifdef _DEBUG
+#if defined(_DEBUG) || !defined(_OPENMP)
 				int tid = 0;
 #else
 				int tid = omp_get_thread_num();
